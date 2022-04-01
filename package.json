@@ -1,44 +1,70 @@
 {
-    "name": "node-typescript-boilerplate",
-    "version": "0.0.0",
-    "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
-    "devDependencies": {
-        "@types/express": "^4.17.13",
-        "@types/jest": "~27.0.2",
-        "@types/node": "~16.11.6",
-        "@typescript-eslint/eslint-plugin": "~5.7.0",
-        "@typescript-eslint/parser": "~5.7.0",
-        "eslint": "~8.4.1",
-        "eslint-config-prettier": "~8.3.0",
-        "eslint-plugin-jest": "~25.3.0",
-        "jest": "~27.4.4",
-        "nodemon": "^2.0.15",
-        "prettier": "~2.5.1",
-        "prisma": "^3.10.0",
-        "rimraf": "~3.0.2",
-        "ts-jest": "~27.1.1",
-        "ts-node": "^10.5.0",
-        "tsutils": "~3.21.0",
-        "typescript": "~4.5.3"
-    },
-    "scripts": {
-        "start": "node build/src/main.js",
-        "dev": "nodemon --exec ts-node src/index.ts",
-        "prebuild": "npm run lint",
-        "build": "tsc -p tsconfig.release.json",
-        "build:watch": "tsc -w -p tsconfig.release.json",
-        "lint": "eslint . --ext .ts,.tsx",
-        "test": "jest",
-        "test:coverage": "jest --coverage",
-        "test:watch": "jest --watch"
-    },
-    "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
-    "license": "Apache-2.0",
-    "dependencies": {
-        "express": "^4.17.3",
-        "tslib": "~2.3.1"
-    },
-    "volta": {
-        "node": "16.13.0"
-    }
+     "name": "node-express-typescript-jest-supertest-boilerplate",
+     "author": "American Corner Oran - IT Department",
+     "license": "MIT",
+     "version": "1.0.0",
+     "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+     "devDependencies": {
+          "@types/bcrypt": "^5.0.0",
+          "@types/cookie-parser": "^1.4.2",
+          "@types/cors": "^2.8.12",
+          "@types/express": "^4.17.13",
+          "@types/express-session": "^1.17.4",
+          "@types/jest": "~27.0.2",
+          "@types/node": "~16.11.6",
+          "@types/supertest": "^2.0.11",
+          "@typescript-eslint/eslint-plugin": "~5.7.0",
+          "@typescript-eslint/parser": "~5.7.0",
+          "concurrently": "^7.0.0",
+          "eslint": "~8.4.1",
+          "eslint-config-prettier": "~8.3.0",
+          "eslint-plugin-import": "^2.25.4",
+          "eslint-plugin-jest": "~25.3.0",
+          "eslint-plugin-jsdoc": "^38.1.4",
+          "eslint-plugin-jsx-a11y": "^6.5.1",
+          "eslint-plugin-prettier": "^4.0.0",
+          "eslint-plugin-react": "^7.28.0",
+          "eslint-plugin-simple-import-sort": "^7.0.0",
+          "husky": "^7.0.4",
+          "jest": "~27.4.4",
+          "lint-staged": "^12.3.7",
+          "nodemon": "^2.0.15",
+          "prettier": "~2.5.1",
+          "pretty-quick": "^3.1.3",
+          "supertest": "^6.2.2",
+          "ts-jest": "~27.1.1",
+          "ts-node": "^10.5.0",
+          "tsutils": "~3.21.0",
+          "typescript": "~4.5.3"
+     },
+     "scripts": {
+          "test": "jest --silent",
+          "start": "node build/src/main.js",
+          "dev": "nodemon --exec ts-node src/main.ts",
+          "build": "tsc -p tsconfig.build.json",
+          "build:watch": "tsc -w -p tsconfig.release.json",
+          "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore --max-warnings=0",
+          "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
+          "lint": "yarn lint:format && yarn lint:fix ",
+          "type-check": "tsc",
+          "test:watch": "jest --watch",
+          "prepare": "husky install",
+          "pre-commit": "lint-staged"
+     },
+     "dependencies": {
+          "bcrypt": "^5.0.1",
+          "class-transformer": "^0.5.1",
+          "cookie-parser": "^1.4.6",
+          "cors": "^2.8.5",
+          "express": "^4.17.3",
+          "express-session": "^1.17.2",
+          "tslib": "~2.3.1",
+          "typeorm": "^0.2.44",
+          "typeorm-store": "^2.0.0"
+     },
+     "husky": {
+          "hooks": {
+               "pre-commit": "pretty-quick --staged"
+          }
+     }
 }
